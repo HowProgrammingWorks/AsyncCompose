@@ -1,2 +1,1 @@
-# AsyncCompose
-Asynchronous Function Composition
+# Asynchronous Function Composition
