@@ -1,11 +1,11 @@
 'use strict';
 
-const compose = (f1, f2) => async (x) => await f2(await f1(x));
+const compose = (f1, f2) => async x => await f2(await f1(x));
 
 // Usage
 
-const inc = async (x) => x + 1;
-const twice = async (x) => x * 2;
+const inc = async x => x + 1;
+const twice = async x => x * 2;
 
 const f = compose(inc, twice);
 
