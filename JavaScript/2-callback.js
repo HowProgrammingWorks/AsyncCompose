@@ -2,6 +2,10 @@
 
 const compose = (f1, f2) => (x, callback) => {
   f1(x, (err, res) => {
+    if (err) {
+      callback(err);
+      return;
+    }
     f2(res, callback);
   });
 };

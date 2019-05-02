@@ -7,6 +7,10 @@ const compose = (...fns) => (x, callback) => {
     return;
   }
   fn(x, (err, res) => {
+    if (err) {
+      callback(err);
+      return;
+    }
     const f = compose(...fns);
     f(res, callback);
   });
