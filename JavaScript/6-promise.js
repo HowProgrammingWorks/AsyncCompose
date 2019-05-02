@@ -8,13 +8,10 @@ const compose = (...fns) => x => {
 
 // Usage
 
-const inc = async x => x + 1;
-const twice = async x => x * 2;
-const square = async x => x * x;
+const inc = x => Promise.resolve(x + 1);
+const twice = x => Promise.resolve(x * 2);
+const square = x => Promise.resolve(x * x);
 
 const f = compose(inc, twice, square, inc);
 
-(async () => {
-  const res = await f(7);
-  console.dir({ res });
-})();
+f(7).then(console.log);
