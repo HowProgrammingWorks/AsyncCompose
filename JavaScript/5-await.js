@@ -1,6 +1,6 @@
 'use strict';
 
-const compose = (...fns) => async x => {
+const compose = (...fns) => async (x) => {
   let res = x;
   for (const fn of fns) {
     res = await fn(res);
@@ -10,9 +10,9 @@ const compose = (...fns) => async x => {
 
 // Usage
 
-const inc = async x => x + 1;
-const twice = async x => x * 2;
-const square = async x => x * x;
+const inc = async (x) => x + 1;
+const twice = async (x) => x * 2;
+const square = async (x) => x * x;
 
 const f = compose(inc, twice, square, inc);
 
