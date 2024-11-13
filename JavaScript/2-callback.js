@@ -18,5 +18,6 @@ const twice = (x, callback) => callback(null, x * 2);
 const f = compose(inc, twice);
 
 f(7, (err, res) => {
-  console.log({ res });
+  if (err) console.error(err);
+  else console.log({ res });
 });

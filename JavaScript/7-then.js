@@ -1,10 +1,12 @@
 'use strict';
 
-const compose = (...fns) => (x) => {
-  const fn = fns.shift();
-  if (fns.length === 0) return fn(x);
-  return fn(x).then((res) => compose(...fns)(res));
-};
+const compose =
+  (...fns) =>
+  (x) => {
+    const fn = fns.shift();
+    if (fns.length === 0) return fn(x);
+    return fn(x).then((res) => compose(...fns)(res));
+  };
 
 // Usage
 
@@ -14,7 +16,9 @@ const square = async (x) => x * x;
 
 const f = compose(inc, twice, square, inc);
 
-(async () => {
+const main = async () => {
   const res = await f(7);
   console.dir({ res });
-})();
+};
+
+main();
