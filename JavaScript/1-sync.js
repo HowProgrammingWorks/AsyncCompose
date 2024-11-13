@@ -1,12 +1,13 @@
 'use strict';
 
-const compose = (f1, f2) => (x) => f2(f1(x));
+const compose = (f1, f2) => (x) => f1(f2(x));
 
 // Usage
 
 const inc = (x) => x + 1;
 const twice = (x) => x * 2;
 
-const f = compose(inc, twice);
+const f = compose(twice, inc);
 
-console.log({ res: f(7) });
+const res = f(7);
+console.log({ res });

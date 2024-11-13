@@ -1,6 +1,6 @@
 'use strict';
 
-const compose =
+const pipe =
   (...fns) =>
   async (x) => {
     let res = x;
@@ -16,9 +16,11 @@ const inc = async (x) => x + 1;
 const twice = async (x) => x * 2;
 const square = async (x) => x * x;
 
-const f = compose(inc, twice, square, inc);
+const f = pipe(inc, twice, square, inc);
 
-(async () => {
+const main = async () => {
   const res = await f(7);
   console.dir({ res });
-})();
+};
+
+main();

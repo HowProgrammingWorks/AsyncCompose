@@ -1,6 +1,6 @@
 'use strict';
 
-const compose =
+const pipe =
   (...fns) =>
   (x, callback) => {
     const fn = fns.shift();
@@ -13,7 +13,7 @@ const compose =
         callback(err);
         return;
       }
-      const f = compose(...fns);
+      const f = pipe(...fns);
       f(res, callback);
     });
   };
@@ -24,7 +24,7 @@ const inc = (x, callback) => callback(null, x + 1);
 const twice = (x, callback) => callback(null, x * 2);
 const square = (x, callback) => callback(null, x * x);
 
-const f = compose(inc, twice, square, inc); // 257
+const f = pipe(inc, twice, square, inc); // 257
 
 f(7, (err, res) => {
   if (err) console.error(err);
